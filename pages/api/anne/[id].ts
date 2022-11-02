@@ -14,7 +14,7 @@ export default async function  getAllWishById(req: NextApiRequest, res: NextApiR
 
     if(req.method === "GET") {
         const {id} = req.body;
-        const data = await executeQuery(`SELECT * FROM anne WHERE id ='${id}'`)
+        const data = await executeQuery(`SELECT * FROM anne WHERE id = ${id}`)
         res.status(201).json({message: `Fetching ${id}`, data})
         console.log(data)
         return;
