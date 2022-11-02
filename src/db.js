@@ -1,5 +1,11 @@
 import mysql from 'serverless-mysql'
 
+await NextCors(req, res, {
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccesStatus: 200,
+})
+
 const db = mysql({
     config: {
         host: process.env.HOST,

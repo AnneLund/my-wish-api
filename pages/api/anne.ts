@@ -2,6 +2,7 @@ import executeQuery from "../../src/db";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function getAllWishesById(req: NextApiRequest, res: NextApiResponse) {
+
    
 if(req.method === "GET") {
    
