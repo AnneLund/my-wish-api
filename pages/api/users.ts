@@ -34,9 +34,17 @@ return;
 
     if(req.method === "POST") {
         const {username, password} = req.body
-        const user = await executeQuery(`SELECT * FROM users WHERE (username, password) VALUES('${username}', '${password}')`)
+
+if(!username || !password) {
+    res.status(422).json({message: "Invalid data"})
+    return;  
+} else {
+      const user = await executeQuery(`SELECT * FROM users WHERE password = '${password}')`)
         res.status(201).json({message: "Logged in!", user})
         return;
+}
+
+      
         
         
       
