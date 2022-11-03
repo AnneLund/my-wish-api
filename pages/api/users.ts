@@ -40,9 +40,13 @@ return;
             return;
         }
 
-        const user = await executeQuery(`INSERT INTO users(username, password) VALUES('${username}', '${password}')`)
-        res.status(201).json({message: "Data created!", user})
-        return;
+        if(username && password) {
+        const user = await executeQuery(`SELECT * FROM users WHERE username = ?`)
+        res.status(201).json({message: "Logged in!", user})
+        return;     
+        } else {
+            res.status(201).json({message: "Invalid data!"})
+        }
     }
 
 
