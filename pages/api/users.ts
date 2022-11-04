@@ -45,8 +45,9 @@ return;
             console.log(req.body)
         const compared = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
         
+
         if (compared[0].password == password) {
-            res.status(200).json({message: "Logged in!", status: true})
+            res.status(200).json({message: "Logged in!", status: true, compared})
             return;
         }
 
