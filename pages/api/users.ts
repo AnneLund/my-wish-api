@@ -34,6 +34,7 @@ return;
 
     if(req.method === "POST") {
         const {username, password, id} = req.body
+      
 
         if (!username || !password) {
             res.status(201).json({message: "Udfyld felt"})
@@ -41,9 +42,10 @@ return;
         } 
 
         if (username && password) {
+            console.log(req.body)
         const compared = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
-
-        if (compared == password) {
+        
+        if (compared[0].password == password) {
             res.status(200).json({message: "Logged in!", status: true})
             return;
         }
