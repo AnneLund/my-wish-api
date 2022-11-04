@@ -35,9 +35,17 @@ return;
     if(req.method === "POST") {
         const {username, password} = req.body
 
+        if (!username || !password) {
+            res.status(201).json({message: "Forkert brugernavn eller password"})
+            return;
+        } else if (username && password) {
+        
    const user = await executeQuery(`SELECT * FROM users WHERE password = '${password}'`)
         res.status(201).json({message: "Logged in!", user})
-        return;       
+        return;     
+        } 
+
+      
 
 // if(!username || !password) {
 //     res.status(422).json({message: "Invalid data"})
