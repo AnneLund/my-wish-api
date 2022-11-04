@@ -36,13 +36,20 @@ return;
         const {username, password, id} = req.body
 
         if (!username || !password) {
-            res.status(201).json({message: "Forkert brugernavn eller password"})
+            res.status(201).json({message: "Udfyld felt"})
             return;
         } 
 
         if (username && password) {
-        const user = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
-        res.status(201).json({message: "Logged in!", user})
+        const compared = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
+
+        if (compared == password) {
+            res.status(200).json({message: "Logged in!", status: true})
+            return;
+        }
+
+        res.status(401).json({message: "Forkert kode eller brugernavn", status: false})
+
         return;    
         }
         }
