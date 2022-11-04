@@ -33,39 +33,18 @@ return;
     }
 
     if(req.method === "POST") {
-        const {username, password, id} = req.body
-      
+        const {username, password} = req.body
 
-        if (!username || !password) {
-            res.status(201).json({message: "Udfyld felt"})
-            return;
-        } 
-
-        if (username && password) {
-            console.log(req.body)
-
-        const user = await executeQuery(`SELECT password, username FROM users WHERE username ='${username}', password = '${password}' ` )
-        
-
-        if (user[0].password == password) {
-            res.status(200).json({message: "Logged in!", status: true, user})
+        if(!username || !password){
+            res.status(422).json({message: "Invalid data"})
             return;
         }
 
-        res.status(401).json({message: "Forkert kode eller brugernavn", status: false})
+        const user = await executeQuery(`INSERT INTO users(username, password) VALUES('${username}', '${password}')`)
+        res.status(201).json({message: "Data created!", user})
+        return;
+    }
 
-        return;    
-        }
-        }
-
-      
-
-// if(!username || !password) {
-//     res.status(422).json({message: "Invalid data"})
-//     return;  
-
-// } else {
-    
 
 if(req.method === "GET") {
 
