@@ -44,7 +44,7 @@ return;
         if (username && password) {
             console.log(req.body)
 
-        const user = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
+        const user = await executeQuery(`SELECT password, username FROM users WHERE username ='${username}', password = '${password}' ` )
         
 
         if (user[0].password == password) {
