@@ -33,14 +33,14 @@ return;
     }
 
     if(req.method === "POST") {
-        const {username, password} = req.body
+        const {username, password, id} = req.body
 
         if (!username || !password) {
             res.status(201).json({message: "Forkert brugernavn eller password"})
             return;
         } 
         
-        const user = await executeQuery(`SELECT * FROM users`)
+    const user = await executeQuery(`SELECT * FROM users WHERE id='${id}'` )
         res.status(201).json({message: "Logged in!", user})
         return;     
         }
