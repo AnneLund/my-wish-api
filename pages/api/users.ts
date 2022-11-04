@@ -43,11 +43,12 @@ return;
 
         if (username && password) {
             console.log(req.body)
-        const compared = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
+
+        const user = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
         
 
-        if (compared[0].password == password) {
-            res.status(200).json({message: "Logged in!", status: true, compared})
+        if (user[0].password == password) {
+            res.status(200).json({message: "Logged in!", status: true, user})
             return;
         }
 
