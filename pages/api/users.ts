@@ -38,9 +38,11 @@ return;
         if (!username || !password) {
             res.status(201).json({message: "Forkert brugernavn eller password"})
             return;
-        } else if (username && password) {
+        } 
         
-   const user = await executeQuery(`SELECT * FROM users WHERE password = '${password}'`)
+        if (username === username) {
+        
+   const user = await executeQuery(`SELECT * FROM users WHERE username = '${username}'`)
         res.status(201).json({message: "Logged in!", user})
         return;     
         } 
