@@ -39,10 +39,15 @@ return;
             res.status(201).json({message: "Forkert brugernavn eller password"})
             return;
         } 
-        
-    const user = await executeQuery(`SELECT * FROM users WHERE username ='${username}'` )
+
+        if (username && password) {
+          const user = await executeQuery(`SELECT * FROM users WHERE username ='${username}'` )
         res.status(201).json({message: "Logged in!", user})
-        return;     
+        return;    
+        }
+
+  
+         
         }
 
       
