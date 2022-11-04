@@ -40,8 +40,8 @@ return;
             return;
         } 
         
-  await executeQuery(`SELECT * FROM users`)
-        res.status(201).json({message: "Logged in!"})
+        const user = await executeQuery(`SELECT * FROM users`)
+        res.status(201).json({message: "Logged in!", user})
         return;     
         }
 
