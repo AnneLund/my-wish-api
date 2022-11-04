@@ -40,7 +40,7 @@ return;
             return;
         } 
         
-    const user = await executeQuery(`SELECT * FROM users WHERE id='${id}'` )
+    const user = await executeQuery(`SELECT * FROM users WHERE username ='${username}'` )
         res.status(201).json({message: "Logged in!", user})
         return;     
         }
