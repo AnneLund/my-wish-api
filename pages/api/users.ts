@@ -41,13 +41,10 @@ return;
         } 
 
         if (username && password) {
-          const user = await executeQuery(`SELECT * FROM users WHERE username ='${username}'` )
+        const user = await executeQuery(`SELECT password FROM users WHERE username ='${username}'` )
         res.status(201).json({message: "Logged in!", user})
         return;    
         }
-
-  
-         
         }
 
       
