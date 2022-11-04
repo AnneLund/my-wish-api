@@ -40,12 +40,12 @@ return;
             return;
         } 
         
-        if (username && password ) {
+     
         
    const user = await executeQuery(`SELECT * FROM users`)
         res.status(201).json({message: "Logged in!", user})
         return;     
-        } 
+        }
 
       
 
@@ -55,8 +55,6 @@ return;
 
 // } else {
     
-}
-
 
 if(req.method === "GET") {
 
