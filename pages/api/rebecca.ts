@@ -18,7 +18,7 @@ return;
 }
 
 else{
-    res.status(500).json({message: "Route not valid"})
+    res.status(500).json({message: "GETRoute not valid"})
 }
 
 if(req.method === "PUT") {
