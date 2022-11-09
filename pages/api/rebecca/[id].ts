@@ -20,5 +20,30 @@ export default async function  getAllWishById(req: NextApiRequest, res: NextApiR
         else{
             res.status(500).json({message: "Route not valid"})
         }
+
+        if(req.method === "PUT") {
+            const {id, købt} = req.body
+            console.log(req.body)
         
+            if(!id){
+                res.status(422).json({message: "Invalid id!"})
+                return;
+            }
+        
+            if(købt && id) {
+                await executeQuery(`UPDATE wishes SET købt = '${købt}' WHERE id = '${id}'`)
+                res.status(201).json({message: "'Købt' opdateret!"})
+                return;
+            }  
+        
+        //       else if (titel && description && url && image && id) {
+        //    await executeQuery(`UPDATE wishes SET titel = '${titel}', image = '${image}', url = '${url}', description = '${description}' WHERE id = '${id}'`)
+        //     res.status(201).json({message: "Data updated!"})
+        //     return;
+        //     }     
+            
+            else{
+                res.status(500).json({message: "PUT-requesten fejlede..."})
+            }
+            }
 }
