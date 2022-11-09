@@ -6,10 +6,7 @@ export default async function getAllWishesById(req: NextApiRequest, res: NextApi
     await NextCors(req, res, {
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
         origin: '*',
-        optionsSuccesStatus: 200,
-        'Access-Control-Allow-Origin': ' http://127.0.0.1:3000',
-        'Access-Control-Allow-Methods': 'POST',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        optionsSuccesStatus: 200
     })
    
 if(req.method === "GET") {
