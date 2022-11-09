@@ -13,11 +13,11 @@ export default async function getAllWishesById(req: NextApiRequest, res: NextApi
 if(req.method === "GET") {
    
 const data = await executeQuery(`SELECT * FROM anne`)
-
 res.status(201).json({message: "Data fetch", data})
-
 console.log(data)
+
 return;
+
 }
 
 else{

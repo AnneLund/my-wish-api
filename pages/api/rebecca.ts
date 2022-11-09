@@ -13,13 +13,9 @@ if(req.method === "GET") {
    
 const data = await executeQuery(`SELECT * FROM wishes`)
 res.status(201).json({message: "Data fetch", data})
-
 return;
 }
 
-else{
-    res.status(500).json({message: "GETRoute not valid"})
-}
 
 if(req.method === "PUT") {
     const {id, købt} = req.body
