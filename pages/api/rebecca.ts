@@ -12,10 +12,8 @@ export default async function getAllWishesById(req: NextApiRequest, res: NextApi
 if(req.method === "GET") {
    
 const data = await executeQuery(`SELECT * FROM wishes`)
-
 res.status(201).json({message: "Data fetch", data})
 
-console.log(data)
 return;
 }
 
@@ -31,11 +29,11 @@ if(req.method === "PUT") {
         return;
     }
 
-    if(købt && id && !titel && !description && !url && !image) {
+    if(købt && !id && !titel && !description && !url && !image) {
         await executeQuery(`UPDATE wishes SET købt = '${købt}' WHERE id = '${id}'`)
         res.status(201).json({message: "'Købt' opdateret!"})
         return;
-            }  
+    }  
 
       else if (titel && description && url && image && id) {
    await executeQuery(`UPDATE wishes SET titel = '${titel}', image = '${image}', url = '${url}', description = '${description}' WHERE id = '${id}'`)
@@ -46,6 +44,7 @@ if(req.method === "PUT") {
 
 if(req.method === "DELETE") {
     const {id} = req.body
+    console.log(req.body)
     if(!id){
         res.status(422).json({message: "Invalid data"})
         return;
@@ -59,13 +58,9 @@ return;
 if(req.method === "POST") {
     const {titel, description, image, url, købt} = req.body
 
-    // if(!username || !password){
-    //     res.status(422).json({message: "Invalid data"})
-    //     return;
-    // }
-
     const data = await executeQuery(`INSERT INTO wishes(titel, description, image, url, købt) VALUES('${titel}', '${description}', '${image}', '${url}', '${købt}')`)
     res.status(201).json({message: "Data created!", data})
+   
     return;
 }
 
