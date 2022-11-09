@@ -29,7 +29,7 @@ if(req.method === "PUT") {
         return;
     }
 
-    if(købt && !id && !titel && !description && !url && !image) {
+    if(købt && id && !titel && !description && !url && !image) {
         await executeQuery(`UPDATE wishes SET købt = '${købt}' WHERE id = '${id}'`)
         res.status(201).json({message: "'Købt' opdateret!"})
         return;
