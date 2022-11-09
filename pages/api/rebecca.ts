@@ -40,7 +40,11 @@ if(req.method === "PUT") {
    await executeQuery(`UPDATE wishes SET titel = '${titel}', image = '${image}', url = '${url}', description = '${description}' WHERE id = '${id}'`)
     res.status(201).json({message: "Data updated!"})
     return;
-    }          
+    }     
+    
+    else{
+        res.status(500).json({message: "PUT-requesten fejlede..."})
+    }
     }
 
 if(req.method === "DELETE") {
