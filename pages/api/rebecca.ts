@@ -7,6 +7,9 @@ export default async function getAllWishesById(req: NextApiRequest, res: NextApi
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
         origin: '*',
         optionsSuccesStatus: 200,
+        'Access-Control-Allow-Origin': ' http://127.0.0.1:3000',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     })
    
 if(req.method === "GET") {
@@ -24,6 +27,7 @@ else{
 if(req.method === "PUT") {
     const {titel, image, id, url, description, købt} = req.body
     console.log(req.body)
+
     if(!id){
         res.status(422).json({message: "Invalid id!"})
         return;
